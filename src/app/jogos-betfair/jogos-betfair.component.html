@@ -1,0 +1,127 @@
+ <!-- <h1>Cleiton</h1> -->
+
+ <!-- <em *ngIf="!(Jogos$)"><em>Loading...</em></p> -->
+<div class="col-md-12">
+  <div class="card bg-primary text-white">
+    <h3 class="card-title text-center">
+      <div class="d-flex flex-wrap justify-content-center mt-2">
+        <h3><strong>Igor</strong> - {{now | date:'medium'}}</h3>
+      </div>
+    </h3>
+  </div>
+</div>
+<p></p>
+
+
+
+<div class="col-md-12">
+  <form [formGroup]="tokenForm" (ngSubmit)="AtualizaToken()" #formDir="ngForm" novalidate>
+    <div class="form-group row">
+      <label class><strong>Token</strong></label>
+      <input formControlName="token" class="form-control" type="text" placeholder="Novo Token">
+      <small *ngIf="tokenForm.get('token').errors?.Required" class="text-danger d-block mt-2">
+        Token Required
+      </small>
+    </div>
+    <div class="form-group">
+      <button [disabled]="tokenForm.invalid" type="submit" class="btn btn-primary mb-2">Alterar Token</button>
+    </div>
+
+  </form>
+</div>
+<table *ngIf="Jogos$">
+
+
+
+
+
+
+  <!-- <div class="row">
+  <div class="[formGroup]="contaForm" form-group mx-sm-3 mb-2">
+  <input class="form-control" id="token" placeholder="Novo Token">
+  </div>
+    <button type="submit" class="btn btn-primary mb-2" (click)="AtualizaToken(token.value)" >Alterar Token</button>
+
+  </div> -->
+
+<p></p>
+
+  <div class="container">
+    <div class = "row">
+      <div class = "col-lg-6" >
+        <table class=" small table table-responsive table-striped" >
+          <thead class="thead-dark" >
+            <tr>
+              <th>C</th>
+              <th>V</th>
+              <th>Casa</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Visit"</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Iniciado</th>
+
+            </tr>
+          </thead>
+          <tbody  *ngFor="let jogo of Jogos$">
+            <tr *ngIf="jogo.flagEntrar == false "  >
+              <!-- <div *ngIf="jogo.flagEntrar == false "> -->
+
+              <td>{{ jogo.nomeCasa }}</td>
+              <td>{{ jogo.nomeVisitante }}</td>
+              <td>{{ jogo.odd1Casa}}</td>
+              <td>{{ jogo.odd2Casa}}</td>
+              <td>{{ jogo.odd3Casa}}</td>
+              <td>{{ jogo.odd1Visitante}}</td>
+              <td>{{ jogo.odd2Visitante}}</td>
+              <td>{{ jogo.odd3Visitante}}</td>
+              <td>{{ jogo.flagIniciado }}</td>
+            <!-- </div> -->
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+
+      <div class="col-lg-6">
+        <table class="small table table-striped table-warning table-responsive" >
+          <thead class="thead-dark">
+            <tr>
+              <th>C</th>
+              <th>V</th>
+              <th>Casa"</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Visit"</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Iniciado</th>
+
+            </tr>
+          </thead>
+          <tbody *ngFor="let jogo of Jogos$ ">
+            <tr *ngIf="jogo.flagEntrar == true ">
+
+              <td>{{ jogo.nomeCasa }}</td>
+              <td>{{ jogo.nomeVisitante }}</td>
+              <td>{{ jogo.odd1Casa}}</td>
+              <td>{{ jogo.odd2Casa}}</td>
+              <td>{{ jogo.odd3Casa}}</td>
+              <td>{{ jogo.odd1Visitante}}</td>
+              <td>{{ jogo.odd2Visitante}}</td>
+              <td>{{ jogo.odd3Visitante}}</td>
+              <td>{{ jogo.flagIniciado }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+
+    </div>
+  </div>
+
+</table>
+
+
