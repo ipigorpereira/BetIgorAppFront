@@ -14,4 +14,5 @@ export class Jogo {
   jogoFinalizad: boolean;
   dataInicio: Date;
   dataInicioPragramada: Date;
+  flagEntrarFavoritoSegundoTempo: boolean;
   }
