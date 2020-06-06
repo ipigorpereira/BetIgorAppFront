@@ -11,7 +11,7 @@ export class Jogo {
     odd3Visitante: number;
     flagIniciado: boolean;
   flagEntrar: boolean;
-  jogoFinalizad: boolean;
+  jogoFinalizado: boolean;
   dataInicio: Date;
   dataInicioPragramada: Date;
   flagEntrarFavoritoSegundoTempo: boolean;

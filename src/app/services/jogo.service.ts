@@ -19,6 +19,7 @@ export class JogoService {
   myApiUrl: string;
   myApiUrlAtualiza: string;
   myApiUrlAtualizaToken: string
+  myApiUrlAtualizaOver: string
   conta: AccountBetfair;
   httpOptions = {
     headers: new HttpHeaders({
@@ -27,10 +28,11 @@ export class JogoService {
   };
 
   constructor(private http: HttpClient) {
-    this.myAppUrl = 'https://localhost:44344/';
+    this.myAppUrl = 'https://betigorapi.azurewebsites.net/';
     this.myApiUrl = 'api/BetIgor';
     this.myApiUrlAtualiza = 'api/BetIgor/AtualizaJogos';
     this.myApiUrlAtualizaToken = 'api/BetIgor/AtualizaToken';
+    this.myApiUrlAtualizaOver = 'api/BetIgor/RegraGols';
    }
 
   getEvents(): Observable<any> {
@@ -47,6 +49,14 @@ export class JogoService {
      retry(1),
      catchError(this.errorHandler)
    );
+  };
+
+  AtualizaEventsRegraOver(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrlAtualizaOver)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      );
   };
 
   AtualizaToken(conta) {

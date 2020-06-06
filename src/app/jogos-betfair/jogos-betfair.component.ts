@@ -34,7 +34,11 @@ export class JogosBetfairComponent implements OnInit {
 
      setInterval(() => {
       this.AtualizaJogos();
-    }, 5500);
+     }, 5500);
+
+    setInterval(() => {
+      this.AtualizaOver();
+    }, 15000);
 
 
      setInterval(() => {
@@ -54,6 +58,9 @@ export class JogosBetfairComponent implements OnInit {
 
   AtualizaJogos() {
     this.jogoService.AtualizaEvents().subscribe((data: Observable<Jogo[]>) => this.RecebeJogos(data));
+  }
+  AtualizaOver() {
+    this.jogoService.AtualizaEventsRegraOver().subscribe();
   }
 
   AtualizaToken() {
