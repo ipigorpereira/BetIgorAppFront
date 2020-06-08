@@ -13,6 +13,8 @@ import { tokenName } from '@angular/compiler';
 })
 export class JogosBetfairComponent implements OnInit {
   Jogos$: Observable<Jogo[]>;
+  JogosRegraGols$: Observable<Jogo[]>;
+  JogosRegraOdds$: Observable<Jogo[]>;
   conta: AccountBetfair;
   form: FormGroup;
   actionType: string;
@@ -51,7 +53,6 @@ export class JogosBetfairComponent implements OnInit {
 
 }
 
-
   loadJogos() {
     this.jogoService.getEvents().subscribe((data: Observable<Jogo[]>) => this.RecebeJogosSemMandar(data) );
   }
@@ -60,7 +61,7 @@ export class JogosBetfairComponent implements OnInit {
     this.jogoService.AtualizaEvents().subscribe((data: Observable<Jogo[]>) => this.RecebeJogos(data));
   }
   AtualizaOver() {
-    this.jogoService.AtualizaEventsRegraOver().subscribe();
+    this.jogoService.AtualizaEventsRegraOver().subscribe((data: Observable<Jogo[]>) => this.RecebeJogosRegraGols(data));
   }
 
   AtualizaToken() {
@@ -72,7 +73,6 @@ export class JogosBetfairComponent implements OnInit {
         appKey: '',
         accountId:'1'
 
-
       };
     this.jogoService.AtualizaToken(this.conta).subscribe(
       () => console.log('token enviado'),
@@ -82,16 +82,17 @@ export class JogosBetfairComponent implements OnInit {
       };
 
 
-
-
-
   RecebeJogos(data) {
-    this.Jogos$ = data;
+    this.JogosRegraOdds$ = data;
 
   }
 
   RecebeJogosSemMandar(data) {
+    this.Jogos$ = data;
+  }
 
+   RecebeJogosRegraGols(data) {
+    this.JogosRegraGols$ = data;
   }
 
   RecebeToken(data) {

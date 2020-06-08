@@ -31,50 +31,11 @@
 </div>
 <table *ngIf="Jogos$">
 
-
 <p></p>
 
   <div class="container">
-    <div class = "row">
-      <div class = "col-lg-6" >
-        <div class="text-justify text-center font-weight-bold bg-aqua text-primary">Jogos</div>
-        <table class=" small table  table-striped" >
-
-          <thead class="thead-dark" >
-            <tr>
-              <th>C</th>
-              <th>V</th>
-              <th>Casa</th>
-              <th>15"</th>
-              <th>30"</th>
-              <th>Visit"</th>
-              <th>15"</th>
-              <th>30"</th>
-              <th>Iniciado</th>
-
-            </tr>
-          </thead>
-          <tbody  *ngFor="let jogo of Jogos$">
-            <tr *ngIf="jogo.flagEntrar == false "  >
-
-
-              <td>{{ jogo.nomeCasa }}</td>
-              <td>{{ jogo.nomeVisitante }}</td>
-              <td>{{ jogo.odd1Casa}}</td>
-              <td>{{ jogo.odd2Casa}}</td>
-              <td>{{ jogo.odd3Casa}}</td>
-              <td>{{ jogo.odd1Visitante}}</td>
-              <td>{{ jogo.odd2Visitante}}</td>
-              <td>{{ jogo.odd3Visitante}}</td>
-              <td>{{ jogo.flagIniciado }}</td>
-
-            </tr>
-          </tbody>
-        </table>
-
-    </div>
-
-      <div class="col-lg-6">
+     <div class = "row">
+      <div class="col-6">
         <div class="text-justify text-center font-weight-bold bg-aqua text-primary">Regra - Odd</div>
         <table class="small table table-striped table-warning" >
           <thead class="thead-dark">
@@ -91,8 +52,7 @@
 
             </tr>
           </thead>
-          <tbody *ngFor="let jogo of Jogos$ ">
-            <tr *ngIf="jogo.flagEntrar == true ">
+          <tbody *ngFor="let jogo of JogosRegraOdds$ ">
 
 
               <td>{{ jogo.nomeCasa }}</td>
@@ -105,12 +65,12 @@
               <td>{{ jogo.odd3Visitante}}</td>
               <td>{{ jogo.flagIniciado }}</td>
 
-            </tr>
           </tbody>
 
         </table>
-        <p></p>
-        <div class="text-justify text-center font-weight-bold bg-aqua text-primary">Regra - Favorito 2º Tempo</div>
+      </div>
+        <div class="col-6">
+        <div class="text-justify text-center font-weight-bold bg-aqua text-primary">Regra - Over</div>
         <table class="small table table-striped table-warning ">
           <thead class="thead-dark">
             <tr>
@@ -126,8 +86,7 @@
 
             </tr>
           </thead>
-          <tbody *ngFor="let jogo of Jogos$ ">
-            <tr *ngIf="jogo.flagEntrarFavoritoSegundoTempo == true ">
+          <tbody *ngFor="let jogo of JogosRegraGols$ ">
 
               <td>{{ jogo.nomeCasa }}</td>
               <td>{{ jogo.nomeVisitante }}</td>
@@ -139,14 +98,50 @@
               <td>{{ jogo.odd3Visitante}}</td>
               <td>{{ jogo.flagIniciado }}</td>
 
-            </tr>
           </tbody>
 
         </table>
+        </div>
+        
 
     </div>
 
+    
+      <div class = "col-12" >
+        <div class="text-justify text-center font-weight-bold bg-aqua text-primary">Jogos</div>
+        <table class=" small table  table-striped table-info" >
+
+          <thead class="thead-dark" >
+            <tr>
+              <th>C</th>
+              <th>V</th>
+              <th>Casa</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Visit"</th>
+              <th>15"</th>
+              <th>30"</th>
+              <th>Iniciado</th>
+
+            </tr>
+          </thead>
+          <tbody  *ngFor="let jogo of Jogos$">
+          
+              <td>{{ jogo.nomeCasa }}</td>
+              <td>{{ jogo.nomeVisitante }}</td>
+              <td>{{ jogo.odd1Casa}}</td>
+              <td>{{ jogo.odd2Casa}}</td>
+              <td>{{ jogo.odd3Casa}}</td>
+              <td>{{ jogo.odd1Visitante}}</td>
+              <td>{{ jogo.odd2Visitante}}</td>
+              <td>{{ jogo.odd3Visitante}}</td>
+              <td>{{ jogo.flagIniciado }}</td>
+
+          </tbody>
+        </table>
+
     </div>
+     
   </div>
 
 </table>
